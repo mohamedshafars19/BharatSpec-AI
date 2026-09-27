@@ -20,11 +20,23 @@ import {
 } from '../types';
 
 // Base API endpoint configuration:
-// Defaults to '/api' for local Vite proxy, or accepts custom backend URLs (e.g. https://your-backend.onrender.com/api)
-const rawBaseUrl = (import.meta.env.VITE_API_BASE_URL || '/api').trim().replace(/\/+$/, '');
-const API_BASE_URL = rawBaseUrl.endsWith('/api')
-  ? rawBaseUrl
-  : (rawBaseUrl === '' || rawBaseUrl === '/api' ? '/api' : `${rawBaseUrl}/api`);
+// Defaults to '/api' for local Vite dev proxy, or accepts custom backend URLs (e.g. https://your-backend.onrender.com/api)
+// When built for production, defaults to the live Render backend URL if VITE_API_BASE_URL is not set or set to '/api'.
+function getApiBaseUrl(): string {
+  const envUrl = (import.meta.env.VITE_API_BASE_URL || '').trim();
+  if (envUrl && envUrl !== '/api') {
+    const clean = envUrl.replace(/\/+$/, '');
+    return clean.endsWith('/api') ? clean : `${clean}/api`;
+  }
+  // Local development uses Vite proxy
+  if (import.meta.env.DEV) {
+    return '/api';
+  }
+  // Production fallback to live Render backend
+  return 'https://bharatspec-ai.onrender.com/api';
+}
+
+const API_BASE_URL = getApiBaseUrl();
 
 export class ApiError extends Error {
   statusCode?: number;
@@ -35,6 +47,45 @@ export class ApiError extends Error {
   }
 }
 
+function parseErrorMessage(errData: any, fallbackMessage: string, statusCode?: number): string {
+  if (!errData) {
+    if (statusCode === 405) {
+      return 'Endpoint returned 405 Method Not Allowed. Please verify API configuration.';
+    }
+    if (statusCode === 404) {
+      return 'The requested authentication service was not found (404).';
+    }
+    if (statusCode && statusCode >= 500) {
+      return `Server error (${statusCode}). The backend service may be waking up. Please retry shortly.`;
+    }
+    return fallbackMessage;
+  }
+
+  // Pydantic / FastAPI detail field
+  if (typeof errData.detail === 'string' && errData.detail.trim()) {
+    return errData.detail.trim();
+  }
+
+  // Pydantic validation error array: [{ loc: ['body', 'name'], msg: 'field required' }]
+  if (Array.isArray(errData.detail) && errData.detail.length > 0) {
+    const formatted = errData.detail
+      .map((item: any) => {
+        const field = Array.isArray(item.loc) ? item.loc[item.loc.length - 1] : '';
+        const msg = item.msg || item.message || '';
+        return field ? `${field}: ${msg}` : msg;
+      })
+      .filter(Boolean)
+      .join('; ');
+    if (formatted) return formatted;
+  }
+
+  if (typeof errData.message === 'string' && errData.message.trim()) {
+    return errData.message.trim();
+  }
+
+  return fallbackMessage;
+}
+
 async function safeFetch(url: string, options?: RequestInit): Promise<Response> {
   try {
     return await fetch(url, options);
@@ -42,7 +93,7 @@ async function safeFetch(url: string, options?: RequestInit): Promise<Response> 
     const isLocal = API_BASE_URL.startsWith('/api') || API_BASE_URL.includes('127.0.0.1') || API_BASE_URL.includes('localhost');
     const hint = isLocal
       ? 'Please verify the backend server is running on http://127.0.0.1:8001.'
-      : 'If using Render free tier, the backend service may be waking up from idle (takes ~50s). Please wait a moment and retry.';
+      : 'If using Render free tier, the backend service may take ~50s to wake up from idle. Please wait a moment and retry.';
     throw new ApiError(
       `Unable to connect to the procurement intelligence backend server. ${hint}`,
       0
@@ -56,24 +107,40 @@ export const api = {
     const res = await safeFetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        email: payload.email.trim().toLowerCase(),
+        password: payload.password,
+        remember_me: payload.remember_me ?? false
+      })
     });
     if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new ApiError(err.detail || 'Login failed. Please verify your credentials.', res.status);
+      const err = await res.json().catch(() => null);
+      const message = parseErrorMessage(err, 'Login failed. Please verify your credentials.', res.status);
+      throw new ApiError(message, res.status);
     }
     return await res.json();
   },
 
   async signup(payload: UserSignup): Promise<AuthToken> {
+    // Strictly formatted payload matching backend schema:
+    // { name, organization, email, password, accept_terms }
+    const cleanPayload = {
+      name: payload.name.trim(),
+      organization: payload.organization.trim(),
+      email: payload.email.trim().toLowerCase(),
+      password: payload.password,
+      accept_terms: Boolean(payload.accept_terms)
+    };
+
     const res = await safeFetch(`${API_BASE_URL}/auth/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(cleanPayload)
     });
     if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new ApiError(err.detail || 'Registration failed. Please check your details.', res.status);
+      const err = await res.json().catch(() => null);
+      const message = parseErrorMessage(err, 'Registration failed. Please check your details.', res.status);
+      throw new ApiError(message, res.status);
     }
     return await res.json();
   },

@@ -9,14 +9,16 @@ export interface User {
 
 export interface UserLogin {
   email: string;
-  password?: string;
+  password: string;
+  remember_me?: boolean;
 }
 
 export interface UserSignup {
   name: string;
   organization: string;
   email: string;
-  password?: string;
+  password: string;
+  accept_terms: boolean;
 }
 
 export interface AuthToken {

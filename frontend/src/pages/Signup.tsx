@@ -18,12 +18,16 @@ export const Signup: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !organization.trim() || !email.trim() || !password.trim()) {
+    const cleanName = name.trim();
+    const cleanOrg = organization.trim();
+    const cleanEmail = email.trim().toLowerCase();
+
+    if (!cleanName || !cleanOrg || !cleanEmail || !password) {
       setError('Please fill in all required registration fields.');
       return;
     }
     if (password !== confirmPassword) {
-      setError('Passwords do not match.');
+      setError('Passwords do not match. Please verify your entries.');
       return;
     }
     if (!acceptTerms) {
@@ -34,10 +38,11 @@ export const Signup: React.FC = () => {
     try {
       setError(null);
       await signup({
-        name: name.trim(),
-        organization: organization.trim(),
-        email: email.trim(),
+        name: cleanName,
+        organization: cleanOrg,
+        email: cleanEmail,
         password: password,
+        accept_terms: true
       });
       showToast('Registration successful! Welcome to BharatSpec AI.', 'success');
       navigate('/dashboard');

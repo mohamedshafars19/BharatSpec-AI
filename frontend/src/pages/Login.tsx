@@ -15,14 +15,15 @@ export const Login: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim() || !password.trim()) {
+    const cleanEmail = email.trim().toLowerCase();
+    if (!cleanEmail || !password) {
       setError('Please provide your official procurement email and password.');
       return;
     }
 
     try {
       setError(null);
-      await login({ email, password });
+      await login({ email: cleanEmail, password, remember_me: rememberMe });
       showToast('Welcome back to BharatSpec AI', 'success');
       navigate('/dashboard');
     } catch (err: any) {
