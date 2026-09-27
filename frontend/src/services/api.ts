@@ -19,7 +19,12 @@ import {
   ClarificationAnswer
 } from '../types';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+// Base API endpoint configuration:
+// Defaults to '/api' for local Vite proxy, or accepts custom backend URLs (e.g. https://your-backend.onrender.com/api)
+const rawBaseUrl = (import.meta.env.VITE_API_BASE_URL || '/api').trim().replace(/\/+$/, '');
+const API_BASE_URL = rawBaseUrl.endsWith('/api')
+  ? rawBaseUrl
+  : (rawBaseUrl === '' || rawBaseUrl === '/api' ? '/api' : `${rawBaseUrl}/api`);
 
 export class ApiError extends Error {
   statusCode?: number;
@@ -34,8 +39,12 @@ async function safeFetch(url: string, options?: RequestInit): Promise<Response> 
   try {
     return await fetch(url, options);
   } catch (err: any) {
+    const isLocal = API_BASE_URL.startsWith('/api') || API_BASE_URL.includes('127.0.0.1') || API_BASE_URL.includes('localhost');
+    const hint = isLocal
+      ? 'Please verify the backend server is running on http://127.0.0.1:8001.'
+      : 'If using Render free tier, the backend service may be waking up from idle (takes ~50s). Please wait a moment and retry.';
     throw new ApiError(
-      'Unable to connect to the procurement intelligence backend server. Please verify backend is running on http://127.0.0.1:8001.',
+      `Unable to connect to the procurement intelligence backend server. ${hint}`,
       0
     );
   }

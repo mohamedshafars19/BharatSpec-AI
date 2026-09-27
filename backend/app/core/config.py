@@ -23,13 +23,23 @@ class Settings:
     DATABASE_URL: str = os.getenv("DATABASE_URL", str(BASE_DIR / "bharatspec.db"))
     
     # CORS
-    CORS_ORIGINS: list[str] = [
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "*"
-    ]
+    _cors_env: str = os.getenv("CORS_ORIGINS", "").strip()
+    if _cors_env:
+        if _cors_env.startswith("["):
+            import json
+            try:
+                CORS_ORIGINS: list[str] = json.loads(_cors_env)
+            except Exception:
+                CORS_ORIGINS: list[str] = [x.strip() for x in _cors_env.split(",") if x.strip()]
+        else:
+            CORS_ORIGINS: list[str] = [x.strip() for x in _cors_env.split(",") if x.strip()]
+    else:
+        CORS_ORIGINS: list[str] = [
+            "http://localhost:5173",
+            "http://127.0.0.1:5173",
+            "http://localhost:3000",
+            "http://127.0.0.1:3000",
+        ]
     
     # Paths
     DATA_DIR: Path = BASE_DIR / "data"
