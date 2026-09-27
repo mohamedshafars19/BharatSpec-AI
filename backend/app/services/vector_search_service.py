@@ -29,6 +29,10 @@ class VectorSearchService:
             self._faiss_available = False
 
     def load_or_build_index(self):
+        # Guard: return immediately if index is already loaded in memory
+        if self.index is not None and len(self.id_map) > 0:
+            return
+
         settings.VECTOR_STORE_DIR.mkdir(parents=True, exist_ok=True)
         
         index_file = settings.FAISS_INDEX_FILE
@@ -39,12 +43,12 @@ class VectorSearchService:
                 self.index = self.faiss.read_index(str(index_file))
                 with open(meta_file, "r", encoding="utf-8") as f:
                     self.id_map = json.load(f)
-                logger.info(f"Loaded existing FAISS index with {len(self.id_map)} standards.")
+                logger.info(f"Loaded existing precomputed FAISS index with {len(self.id_map)} standards.")
                 return
             except Exception as e:
                 logger.warning(f"Failed to read existing index ({e}). Rebuilding...")
 
-        # Build index if not loaded
+        # Build index only if precomputed files do not exist or failed to load
         self.build_index()
 
     def build_index(self):

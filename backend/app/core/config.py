@@ -39,6 +39,8 @@ class Settings:
             "http://127.0.0.1:5173",
             "http://localhost:3000",
             "http://127.0.0.1:3000",
+            "https://bharat-spec-ai.vercel.app",
+            "https://bharatspec-ai.vercel.app",
         ]
     
     # Paths
@@ -48,7 +50,7 @@ class Settings:
     FAISS_INDEX_FILE: Path = VECTOR_STORE_DIR / "standards.index"
     METADATA_FILE: Path = VECTOR_STORE_DIR / "metadata.json"
     
-    # Embedding Model
-    EMBEDDING_MODEL_NAME: str = os.getenv("EMBEDDING_MODEL_NAME", "BAAI/bge-small-en-v1.5")
+    # Embedding Model (lightweight 384-dim all-MiniLM-L6-v2 optimized for 512MB RAM)
+    EMBEDDING_MODEL_NAME: str = os.getenv("EMBEDDING_MODEL_NAME", "all-MiniLM-L6-v2")
 
 settings = Settings()
