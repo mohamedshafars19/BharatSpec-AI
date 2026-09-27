@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-sage: #8B9A6E;
+    --color-cream: #F7F2EB;
+    --color-beige: #EAE2D6;
+    --color-grey: #EEEEEE;
+    --color-white: #FFFFFF;
+    --color-dark: #20241F;
+    --color-success: #557A5B;
+    --color-warning: #B7791F;
+    --color-error: #B94A48;
+
+    --bg-page: #F7F2EB;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #FAF7F2;
+    --border-color: #E2DBD0;
+    --border-subtle: #EAE2D6;
+    --text-primary: #20241F;
+    --text-secondary: #575E54;
+    --text-muted: #7E867B;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+/* Custom UI Tokens */
+.bg-cream { background-color: #F7F2EB; }
+.bg-beige { background-color: #EAE2D6; }
+.bg-sage { background-color: #8B9A6E; }
+.text-sage { color: #8B9A6E; }
+.text-dark { color: #20241F; }
+.border-beige { border-color: #EAE2D6; }
+.border-subtle { border-color: #E2DBD0; }
+
+.font-heading {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+
+.font-technical {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Editorial Card & Panel Styling */
+.card-workspace {
+  background-color: #FFFFFF;
+  border: 1px solid #E2DBD0;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px 0 rgba(32, 36, 31, 0.03);
+  transition: all 0.2s ease;
+}
+
+.card-workspace:hover {
+  border-color: #CDC4B6;
+}
+
+.card-subtle {
+  background-color: #FAF7F2;
+  border: 1px solid #EAE2D6;
+  border-radius: 6px;
+}
+
+/* Button & Action Styling */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #20241F;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  border: 1px solid #20241F;
+}
+
+.btn-primary:hover {
+  background-color: #313730;
+  border-color: #313730;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #FFFFFF;
+  color: #20241F;
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #E2DBD0;
+  transition: all 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #FAF7F2;
+  border-color: #CDC4B6;
+}
+
+.btn-sage {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #8B9A6E;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.btn-sage:hover {
+  background-color: #79875F;
+}
+
+/* Status & Role Badges */
+.badge-complete {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #EBF2EC;
+  color: #3C5A40;
+  border: 1px solid #CFE0D1;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.badge-review {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #FAF4E8;
+  color: #8C5C15;
+  border: 1px solid #EFE0C2;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.badge-missing {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #F8ECEC;
+  color: #933635;
+  border: 1px solid #ECD0D0;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.badge-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #F3EFE8;
+  color: #555C52;
+  border: 1px solid #E2DBD0;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  border-radius: 3px;
+}
+
+/* Diff Highlight Styling */
+.diff-added {
+  background-color: #EDF5EE;
+  border-left: 3px solid #557A5B;
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Modal and Drawers */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(32, 36, 31, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Subtle transitions */
+.animate-fade-in {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,828 @@
+[
+  {
+    "id": "DEMO-STD-001",
+    "title": "Luminaires for Road and Street Lighting (LED) — Safety & Photometric Performance",
+    "category": "Lighting",
+    "scope": "Specification for outdoor LED street lighting luminaires intended for municipal roadways, state highways, flyovers, urban avenues, and municipal road infrastructure operating on AC 230V 50Hz single-phase or 415V three-phase systems.",
+    "description": "Comprehensive standard covering general electrical and mechanical construction, optical distribution, photobiological retinal safety, thermal dissipation, dust and moisture ingress protection (IP66), surge resistance, and minimum lumen efficiency.",
+    "keywords": [
+      "led street light",
+      "street lighting",
+      "luminaire",
+      "municipal road",
+      "energy efficient lighting",
+      "outdoor lighting",
+      "roadway illumination",
+      "ip66",
+      "lumen maintenance",
+      "cct"
+    ],
+    "technical_requirements": [
+      "Luminous system efficacy >= 120 lumens per Watt at rated operating temperature",
+      "Correlated Color Temperature (CCT) between 4000K to 5700K with CRI >= 70",
+      "Driver efficiency >= 90% at full rated load with Power Factor >= 0.95",
+      "Total Harmonic Distortion (THD) <= 10% under nominal operating conditions",
+      "Optical and driver chamber Ingress Protection rating: IP66 minimum",
+      "Built-in Surge Protection Device (SPD) withstand capacity >= 10 kV / 5 kA",
+      "Operating ambient temperature rating: -10 deg C to +50 deg C",
+      "Housing fabricated from pressure die-cast high-grade aluminium alloy with powder coating >= 60 microns"
+    ],
+    "related_standards": [
+      "DEMO-STD-002",
+      "DEMO-STD-003",
+      "DEMO-STD-010"
+    ],
+    "normative_references": [
+      "DEMO-STD-002: Electronic Controlgear / Drivers for LED Road Lighting",
+      "DEMO-STD-003: Photometric Testing and Lumen Maintenance Measurement Protocols"
+    ],
+    "test_methods": [
+      "Photometric flux and candela distribution test using Type-C goniophotometer",
+      "Ingress protection test according to IP66 water jet and dust chamber criteria",
+      "High voltage dielectric test at 2.5 kV AC for 60 seconds",
+      "Salt spray corrosion resistance test (1000 hours continuous exposure)",
+      "Thermal endurance cycling test at 50 deg C maximum ambient environment"
+    ],
+    "safety_requirements": [
+      "Class I luminaire electrical shock protection with mandatory earthing terminal",
+      "Protective earthing path continuity resistance < 0.1 ohm",
+      "Insulation resistance > 20 MOhm measured at 500V DC between live parts and enclosure",
+      "Photobiological retinal blue-light hazard safety rating: Risk Group RG0 (Exempt) or RG1 (Low Risk)"
+    ],
+    "installation_requirements": [
+      "Pole mounting clamp compatible with 48mm to 60mm outer diameter spigot",
+      "Tilt angle adjustable between 0 deg and 15 deg with anti-slip interlocking teeth",
+      "Tool-less quick-access latch for field driver replacement with automatic power cutoff interlock",
+      "External stainless steel (SS304/SS316) screws and fasteners"
+    ],
+    "certification": [
+      "Compulsory Registration Scheme (CRS) compliance approval mark",
+      "Bureau of Energy Efficiency (BEE) Star Rating voluntary compliance tier",
+      "Comprehensive Type Test Report from NABL-accredited test laboratory"
+    ],
+    "version": "Demo Rev. 2022",
+    "amendments": [
+      "Amendment 1 (2023): Elevated internal surge endurance baseline to 10 kV",
+      "Amendment 2 (2024): Raised system efficacy requirement from 105 lm/W to 120 lm/W"
+    ],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-01-15",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-002",
+    "title": "Electronic Controlgear (Drivers) for LED Road and Outdoor Lighting",
+    "category": "Electrical Equipment",
+    "scope": "Covers AC supplied electronic controlgear and constant-current drivers operating up to 440V AC 50Hz for street lighting and outdoor public illumination.",
+    "description": "Specifies performance, electrical safety, harmonic suppression, thermal runaway protection, over-voltage withstand, and efficiency characteristics for LED driver units.",
+    "keywords": [
+      "led driver",
+      "controlgear",
+      "power supply",
+      "street light driver",
+      "power factor",
+      "thd",
+      "surge protection",
+      "constant current"
+    ],
+    "technical_requirements": [
+      "Constant current output ripple <= 5% peak-to-peak",
+      "High voltage cutoff protection for input voltages exceeding 320V AC with automatic restart",
+      "Withstand voltage capability up to 440V AC for 2 hours without failure",
+      "Thermal foldback protection reducing output current if internal temperature exceeds 85 deg C",
+      "Minimum operating lifespan of 50,000 hours at rated case temperature (Tc <= 75 deg C)"
+    ],
+    "related_standards": [
+      "DEMO-STD-001",
+      "DEMO-STD-003"
+    ],
+    "normative_references": [
+      "DEMO-STD-001: Luminaires for Road and Street Lighting"
+    ],
+    "test_methods": [
+      "Harmonic current emissions measurement according to Class C lighting equipment criteria",
+      "Endurance test at maximum ambient temperature under continuous operation for 1000 hours",
+      "Input surge withstand test up to 6 kV line-to-line and 10 kV line-to-earth"
+    ],
+    "safety_requirements": [
+      "Output SELV (Safety Extra Low Voltage) compliance where DC voltage <= 60V",
+      "Galvanic isolation between mains input and LED output terminals > 3.75 kV AC",
+      "Automatic short-circuit and open-circuit circuit breaker response"
+    ],
+    "installation_requirements": [
+      "Internal mounting inside sealed luminaire compartment (minimum IP65)",
+      "Standardised push-in or screw clamp wiring terminals marked with polarity and input rating"
+    ],
+    "certification": [
+      "Compulsory Registration Scheme (CRS) certificate",
+      "RoHS compliant materials declaration"
+    ],
+    "version": "Demo Rev. 2021",
+    "amendments": [
+      "Amendment 1 (2023): Mandated 440V phase-to-phase surge withstand for ungrounded municipal grids"
+    ],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-01-15",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-003",
+    "title": "Photometric Testing, Road Illuminance Uniformity & Energy Rating for Outdoor Luminaires",
+    "category": "Lighting",
+    "scope": "Standardized methods for measuring luminous intensity distributions, total luminous flux, isolux curves, and calculating road lighting uniformity ratios (Uo and Ul) for municipal lighting designs.",
+    "description": "Guides measurement procedures, test setups, goniophotometer calibration, and mathematical derivation of longitudinal and overall road uniformity for traffic corridors.",
+    "keywords": [
+      "photometry",
+      "luminous flux",
+      "illuminance",
+      "road lighting uniformity",
+      "goniophotometer",
+      "energy rating",
+      "lumen maintenance"
+    ],
+    "technical_requirements": [
+      "Overall road illuminance uniformity ratio (Uo) >= 0.40 for major municipal collector roads",
+      "Longitudinal uniformity (Ul) >= 0.60 on expressways and trunk roads",
+      "Threshold increment (TI) for disability glare control <= 10%",
+      "Lumen maintenance measurement conforming to L70 life calculation exceeding 50,000 burning hours"
+    ],
+    "related_standards": [
+      "DEMO-STD-001",
+      "DEMO-STD-002"
+    ],
+    "normative_references": [
+      "DEMO-STD-001: Luminaires for Road and Street Lighting"
+    ],
+    "test_methods": [
+      "Absolute photometry testing in temperature controlled dark room at 25 deg C +/- 1 deg C",
+      "Spectral distribution and colour rendering index (Ra) calculation"
+    ],
+    "safety_requirements": [
+      "Disability glare limitation to prevent motorist disorientation",
+      "Upward light output ratio (ULOR) <= 1% to prevent night sky light pollution"
+    ],
+    "installation_requirements": [
+      "Photometric design simulation submission (IES/LDT format) required prior to project signoff"
+    ],
+    "certification": [
+      "NABL Accredited Photometry Test Laboratory Certificate"
+    ],
+    "version": "Demo Rev. 2023",
+    "amendments": [],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-02-10",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-004",
+    "title": "Ergonomic Office Seating & Workstation Chairs for Institutional Procurement",
+    "category": "Office Furniture",
+    "scope": "Specifications for ergonomic swivel chairs, executive high-back seating, mid-back task chairs, and conference chairs for public sector offices and government institutions.",
+    "description": "Defines anthropometric dimensions, durability cycle ratings, pneumatic gas-lift stability, lumbar support adjustability, upholstery abrasion resistance, and tip-over safety.",
+    "keywords": [
+      "office chair",
+      "ergonomic chair",
+      "swivel chair",
+      "institutional furniture",
+      "gas lift",
+      "lumbar support",
+      "mesh backrest",
+      "seat height adjustment"
+    ],
+    "technical_requirements": [
+      "Five-prong star pedestal base with minimum diameter of 660 mm",
+      "Class-4 pneumatic gas lift certified for minimum user weight rating of 136 kg (300 lbs)",
+      "Pneumatic height adjustment range minimum 100 mm with smooth stroke",
+      "Synchronous tilt mechanism with multi-position lock and tension adjuster",
+      "Seat cushion molded polyurethane foam with density >= 45 kg/m3",
+      "Breathable high-tensile polyester mesh backrest with adjustable lumbar pad"
+    ],
+    "related_standards": [
+      "DEMO-STD-005",
+      "DEMO-STD-006"
+    ],
+    "normative_references": [
+      "DEMO-STD-006: Steel Storage Almirahs and Institutional Furniture Testing"
+    ],
+    "test_methods": [
+      "Cyclic seat fatigue test: 100,000 drops with 102 kg test mass without structural cracking",
+      "Backrest cyclic strength test: 120,000 cycles at 45 kg force",
+      "Caster and base durability test: 100,000 obstacle crossings under full rated load",
+      "Martindale abrasion resistance test: Upholstery fabric withstanding >= 50,000 rubs"
+    ],
+    "safety_requirements": [
+      "Rearward tip-over stability threshold when subjected to 15-degree incline load",
+      "Anti-kickback safety feature on backrest tilt release",
+      "Non-toxic polyurethane materials free from hazardous brominated flame retardants",
+      "Smooth deburred edge radii preventing clothing entrapment or skin abrasion"
+    ],
+    "installation_requirements": [
+      "Standard knock-down (KD) packaging with modular fastener hardware and assembly manual",
+      "Dual-wheel nylon casters suitable for commercial tile and vinyl office flooring"
+    ],
+    "certification": [
+      "GreenPro / GreenGuard environmental emissions certificate",
+      "ISO 9001 and ISO 14001 manufacturing audit certification",
+      "Complete durability test certificate from an accredited testing laboratory"
+    ],
+    "version": "Demo Rev. 2021",
+    "amendments": [
+      "Amendment 1 (2023): Mandated Class-4 gas-lift cylinder as the minimum baseline for all institutional tenders"
+    ],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-01-20",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-005",
+    "title": "Modular Office Workstation Desking Systems and Panel Screens",
+    "category": "Office Furniture",
+    "scope": "Requirements for modular open-plan workstations, executive desks, partition screens, modesty panels, and integrated wire-management raceways for administrative buildings.",
+    "description": "Establishes load-bearing capacity, deflection limits, moisture resistance of pre-laminated board, powder coating thickness on steel understructures, and segregated cable channels.",
+    "keywords": [
+      "workstation",
+      "office desk",
+      "modular furniture",
+      "partition screen",
+      "raceway",
+      "wire management",
+      "particle board",
+      "laminate"
+    ],
+    "technical_requirements": [
+      "Tabletop made of minimum 25mm thick exterior grade pre-laminated particle board (Grade I) or MDF",
+      "Edge banding: 2mm thick PVC edge-band glued with high-temperature hot-melt adhesive",
+      "Understructure: Mild steel tube framing with minimum 1.6mm wall thickness and epoxy powder coat >= 50 microns",
+      "Integrated dual-compartment raceway for segregated electrical power and data/LAN cabling",
+      "Leveling glides with minimum 25mm vertical height adjustment to compensate for floor unevenness"
+    ],
+    "related_standards": [
+      "DEMO-STD-004",
+      "DEMO-STD-006"
+    ],
+    "normative_references": [
+      "DEMO-STD-004: Ergonomic Office Seating Standards"
+    ],
+    "test_methods": [
+      "Static tabletop load test: 150 kg sustained center load for 24 hours with deflection < L/250",
+      "Moisture resistance test: Immersion swelling limit <= 12% after 24 hours in water",
+      "Cross-cut adhesion test for powder-coated metal components"
+    ],
+    "safety_requirements": [
+      "Low formaldehyde emission conforming to Class E1 threshold",
+      "Fire-retardant partition fabric upholstery",
+      "Earthing bonding terminal for metal raceway understructure"
+    ],
+    "installation_requirements": [
+      "Modular interlock system allowing reconfigurability without structural degradation",
+      "Pre-drilled wire cutout grommets with ABS covers"
+    ],
+    "certification": [
+      "E1 Formaldehyde emission certificate",
+      "FSC (Forest Stewardship Council) certified wood supply verification"
+    ],
+    "version": "Demo Rev. 2020",
+    "amendments": [],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-01-20",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-006",
+    "title": "Steel Storage Almirahs, Filing Cabinets and Lockers for Government Offices",
+    "category": "Office Furniture",
+    "scope": "Specifications for steel storage cabinets, personal lockers, and multi-tier record management units fabricated from cold rolled sheet for record rooms and secretariats.",
+    "description": "Standardizes steel gauge thickness, three-point locking mechanisms, shelf weight capacities, anti-rust chemical treatment, and security durability.",
+    "keywords": [
+      "steel almirah",
+      "storage cabinet",
+      "filing cabinet",
+      "office locker",
+      "crca steel",
+      "record storage",
+      "locking mechanism"
+    ],
+    "technical_requirements": [
+      "Fabricated from Cold Rolled Close Annealed (CRCA) steel sheet with minimum thickness 0.8 mm (body) and 1.0 mm (doors)",
+      "Three-way multi-locking bolt mechanism with brass lever tumbler lock and duplicate brass keys",
+      "Adjustable internal shelves with minimum uniform load carrying capacity of 60 kg per shelf",
+      "Seven-tank anti-rust pre-treatment followed by thermosetting polyurethane powder coating >= 50 microns"
+    ],
+    "related_standards": [
+      "DEMO-STD-004",
+      "DEMO-STD-005"
+    ],
+    "normative_references": [],
+    "test_methods": [
+      "Shelf deflection test under 75 kg static load for 48 hours",
+      "Door hinge endurance test: 50,000 open/close cycles without hinge sag",
+      "Scratch resistance test and cross-hatch adhesion inspection"
+    ],
+    "safety_requirements": [
+      "Smooth hemmed corners to eliminate razor-edge hazards",
+      "Anti-tip anchor brackets for multi-tier vertical filing systems"
+    ],
+    "installation_requirements": [
+      "Shipped fully assembled with protective transit corner cushions and desiccant pouches"
+    ],
+    "certification": [
+      "NABL laboratory sheet thickness and coating thickness test report"
+    ],
+    "version": "Demo Rev. 2022",
+    "amendments": [],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-01-15",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-007",
+    "title": "High-Strength Thermo-Mechanically Treated (TMT) Steel Bars for Concrete Reinforcement (Fe-500D & Fe-550D)",
+    "category": "Construction Materials",
+    "scope": "Applies to deformed high-strength steel rebar produced through controlled thermo-mechanical treatment for reinforced cement concrete (RCC) foundations, flyovers, bridges, and seismic-resistant government civil works.",
+    "description": "Specifies chemical composition, carbon equivalent limits, minimum yield strength, ultimate tensile strength, percentage elongation, bend/re-bend performance, and rib geometry.",
+    "keywords": [
+      "tmt bars",
+      "reinforcement steel",
+      "rebar",
+      "fe 500d",
+      "fe 550d",
+      "civil construction",
+      "rcc",
+      "tensile strength",
+      "earthquake resistant"
+    ],
+    "technical_requirements": [
+      "Yield strength (0.2% proof stress) >= 500 N/mm2 for Fe-500D; >= 550 N/mm2 for Fe-550D",
+      "Ultimate Tensile Strength to Yield Strength ratio (UTS/YS) >= 1.10 for high seismic ductility",
+      "Elongation at fracture >= 16.0% for Fe-500D grade",
+      "Total elongation at maximum force (Agt) >= 5.0%",
+      "Maximum Carbon content <= 0.25%, Sulphur <= 0.040%, Phosphorus <= 0.040%, (S+P) <= 0.075%",
+      "Transverse ribs with uniform pitch and height ensuring concrete bond strength >= 1.45"
+    ],
+    "related_standards": [
+      "DEMO-STD-008",
+      "DEMO-STD-015"
+    ],
+    "normative_references": [
+      "DEMO-STD-008: Ordinary Portland Cement for Structural Civil Works"
+    ],
+    "test_methods": [
+      "Tensile testing on universal testing machine (UTM) measuring 0.2% proof stress and elongation",
+      "Cold bend and re-bend test around standard mandrel without transverse cracking",
+      "Spectrometric chemical analysis for carbon equivalent determination",
+      "Macro-etch examination verifying uniform tempered martensitic rim structure"
+    ],
+    "safety_requirements": [
+      "Seismic Grade 'D' specification mandatory for earthquake seismic zones III, IV, and V",
+      "Traceable manufacturer brand marking, grade, and size embossed on every running meter"
+    ],
+    "installation_requirements": [
+      "Storage on elevated wooden sleepers covered with waterproof tarpaulins to prevent corrosive pitting",
+      "Cutting and bending in accordance with bar bending schedules (BBS) avoiding flame cutting"
+    ],
+    "certification": [
+      "Mandatory Bureau of Indian Standards product certification license (ISI mark equivalent)",
+      "Mill Test Certificate (MTC) accompanying every delivery batch"
+    ],
+    "version": "Demo Rev. 2023",
+    "amendments": [
+      "Amendment 1 (2024): Strict enforcement of total elongation at maximum force (Agt) criteria"
+    ],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-02-01",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-008",
+    "title": "Ordinary Portland Cement (OPC 43 & 53 Grade) & Portland Pozzolana Cement (PPC)",
+    "category": "Construction Materials",
+    "scope": "Requirements for hydraulic cement suitable for RCC structural columns, beams, heavy road pavements, pre-stressed concrete, and general municipal infrastructure.",
+    "description": "Defines fineness, soundness, setting times, 3-day/7-day/28-day compressive strengths, insoluble residue, and chloride content limits.",
+    "keywords": [
+      "cement",
+      "opc 53",
+      "opc 43",
+      "ppc",
+      "portland cement",
+      "concrete",
+      "civil construction",
+      "compressive strength",
+      "setting time"
+    ],
+    "technical_requirements": [
+      "28-day compressive strength >= 53 MPa (OPC 53) or >= 43 MPa (OPC 43)",
+      "Initial setting time not less than 30 minutes; Final setting time not more than 600 minutes",
+      "Specific surface (fineness by Blaine air permeability method) >= 225 m2/kg for OPC, >= 300 m2/kg for PPC",
+      "Soundness by Le-Chatelier method <= 10 mm expansion; Autoclave expansion <= 0.8%",
+      "Total chloride content <= 0.10% by mass for RCC applications"
+    ],
+    "related_standards": [
+      "DEMO-STD-007"
+    ],
+    "normative_references": [],
+    "test_methods": [
+      "Standard compressive strength cube testing using 70.6 mm mortar cubes at 3, 7, and 28 days",
+      "Vicat apparatus test for normal consistency and setting times",
+      "Blaine air permeability apparatus fineness determination"
+    ],
+    "safety_requirements": [
+      "Handling precautions against alkaline contact dermatitis and inhalation of dry particulate dust",
+      "Standardised 50 kg HDPE/PP laminated moisture-resistant packaging"
+    ],
+    "installation_requirements": [
+      "Cement older than 90 days from manufacture date must be re-tested prior to structural placement",
+      "Storage in weather-tight godowns with minimum 300mm clearance from walls and elevated wooden floors"
+    ],
+    "certification": [
+      "Mandatory ISI product certification mark on every bag",
+      "Manufacturer test certificate indicating batch number, grade, and weekly strength progress"
+    ],
+    "version": "Demo Rev. 2022",
+    "amendments": [],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-01-18",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-009",
+    "title": "Industrial Safety Helmets (Hard Hats) for Construction and Infrastructure Sites",
+    "category": "Safety Equipment",
+    "scope": "Specifications for protective headgear worn by construction laborers, site engineers, inspection officers, and maintenance workers to mitigate falling object impacts and electrical contact hazards.",
+    "description": "Establishes shell material integrity, headband suspension harness cushioning, impact shock transmission, penetration resistance, flame retardance, and dielectric proof.",
+    "keywords": [
+      "safety helmet",
+      "hard hat",
+      "ppe",
+      "personal protective equipment",
+      "construction safety",
+      "head protection",
+      "impact resistance",
+      "site safety"
+    ],
+    "technical_requirements": [
+      "Outer shell manufactured from high-density polyethylene (HDPE) or virgin ABS polymer",
+      "Shock absorption: Transmitted impact force to headform <= 5.0 kN upon 50 Joule impact",
+      "Penetration resistance: Conical 3.0 kg steel striker dropped from 1 meter must not contact headform",
+      "Electrical proof test: Withstand voltage up to 440V AC (Type 1) or 10 kV (Type 2)",
+      "Six-point or eight-point textile suspension harness with replaceable perspiration sweatband",
+      "Chin strap retention with minimum 19mm width and break-away tension between 150 N and 250 N"
+    ],
+    "related_standards": [
+      "DEMO-STD-010"
+    ],
+    "normative_references": [
+      "DEMO-STD-010: Industrial Safety Footwear with Protective Toecap"
+    ],
+    "test_methods": [
+      "Impact transmission test at conditioned temperatures (-10 deg C and +50 deg C)",
+      "Flame resistance test using Bunsen burner flame for 5 seconds without sustained combustion",
+      "High voltage electrical insulation immersion test"
+    ],
+    "safety_requirements": [
+      "UV stabilizer additive ensuring minimum 3-year outdoor operational shelf life",
+      "Permanent debossed marking inside shell: Manufacturer, Standard ID, Month & Year of manufacture"
+    ],
+    "installation_requirements": [
+      "Nape-strap ratchet adjustment mechanism fitting head circumferences between 52 cm and 64 cm",
+      "Compatible slots for ear muffs, protective face shields, and chin guard attachments"
+    ],
+    "certification": [
+      "Mandatory Personal Protective Equipment BIS certification license",
+      "NABL laboratory impact test report verification"
+    ],
+    "version": "Demo Rev. 2021",
+    "amendments": [
+      "Amendment 1 (2023): Mandated reflective micro-prismatic tape bands for night shift road workers"
+    ],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-01-25",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-010",
+    "title": "Industrial Safety Footwear with Protective Steel or Composite Toecap",
+    "category": "Safety Equipment",
+    "scope": "Specifications for safety shoes, ankle boots, and boots for workplace personal protection against drop impacts, sole puncture, slipping, and chemical splash.",
+    "description": "Standardizes protective toecap impact clearance, outsole slip resistance on ceramic tile with NaLS lubricant, puncture-resistant midsoles, and anti-static electrical resistance.",
+    "keywords": [
+      "safety footwear",
+      "safety shoes",
+      "steel toe",
+      "safety boots",
+      "ppe",
+      "puncture resistance",
+      "anti static",
+      "slip resistant"
+    ],
+    "technical_requirements": [
+      "Protective toecap withstands 200 Joules impact energy with minimum clearance height >= 14 mm (Size 8)",
+      "Compression resistance: Minimum 15 kN crushing load without collapse",
+      "Outsole: Direct injection double-density PU or PU-Rubber with slip resistance coefficient SRC",
+      "Penetration-resistant steel or Kevlar midsole withstanding minimum puncture force of 1100 N",
+      "Electrical resistance: Antistatic range between 100 kOhm to 1000 MOhm",
+      "Upper: Genuine full-grain breathable leather thickness 1.8mm to 2.0mm with water-repellent finish"
+    ],
+    "related_standards": [
+      "DEMO-STD-009"
+    ],
+    "normative_references": [
+      "DEMO-STD-009: Industrial Safety Helmets"
+    ],
+    "test_methods": [
+      "Impact test using 20 kg wedge drop hammer from 1.02 meters height",
+      "Outsole flexing test: 150,000 flex cycles on Ross flexing machine with cut growth < 4 mm",
+      "Puncture resistance test using 4.5 mm diameter hardened test nail"
+    ],
+    "safety_requirements": [
+      "Oil and acid resistant outsole compound (volume swell <= 12% in isooctane)",
+      "Padded collar and bellows tongue preventing ingress of hot debris and gravel"
+    ],
+    "installation_requirements": [
+      "Sizing chart conforming to Indian standard foot anatomy scale sizes 5 through 12"
+    ],
+    "certification": [
+      "Mandatory Quality Control Order (QCO) certification mark",
+      "Type test approval for S1P/S3 safety category"
+    ],
+    "version": "Demo Rev. 2022",
+    "amendments": [],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-01-25",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-011",
+    "title": "Energy-Efficient Oil-Immersed Distribution Transformers (11kV & 33kV up to 2500 kVA)",
+    "category": "Electrical Equipment",
+    "scope": "Applies to 3-phase, 50 Hz, outdoor type mineral oil-immersed distribution transformers used in municipal distribution grids, utilities, and public health engineering pumping stations.",
+    "description": "Sets maximum allowable total losses at 50% and 100% load ratings, copper winding conductivity, insulation oil dielectric properties, temperature rise limits, and tank pressure endurance.",
+    "keywords": [
+      "distribution transformer",
+      "transformer",
+      "11kv transformer",
+      "electrical substation",
+      "power distribution",
+      "copper winding",
+      "transformer oil",
+      "energy efficiency"
+    ],
+    "technical_requirements": [
+      "Maximum Total Losses at 50% load <= 360W and at 100% load <= 1150W for 100 kVA rating (Level 2 Star)",
+      "Windings: Electrolytic grade copper conductors with high-purity kraft paper insulation",
+      "Mineral insulating oil breakdown voltage (BDV) >= 60 kV after filtration",
+      "Maximum top oil temperature rise <= 35 deg C; Winding temperature rise <= 40 deg C over 50 deg C ambient",
+      "Core: High permeability Cold Rolled Grain Oriented (CRGO) silicon steel or amorphous metal"
+    ],
+    "related_standards": [
+      "DEMO-STD-015"
+    ],
+    "normative_references": [
+      "DEMO-STD-015: Low Voltage XLPE Insulated Armoured Electric Power Cables"
+    ],
+    "test_methods": [
+      "Measurement of winding resistance, voltage ratio, and vector group verification",
+      "Short-circuit impedance and load loss measurement at rated frequency",
+      "Lightning impulse withstand test (75 kV peak for 11 kV winding)",
+      "Pressure vacuum leakage test on fully assembled corrugated steel tank"
+    ],
+    "safety_requirements": [
+      "Pressure relief device (PRD) with visual flag and trip contacts",
+      "Conservator tank with magnetic oil level gauge and silica gel dehydrating breather",
+      "Double independent earthing terminals on tank body"
+    ],
+    "installation_requirements": [
+      "Plinth mounting or two-pole structure mounting with bi-directional roller wheels",
+      "Cable end boxes for both HT (11kV) and LT terminals for outdoor tamper-proof connection"
+    ],
+    "certification": [
+      "Mandatory BEE Energy Efficiency Star Label (Minimum 3-Star or Level 2)",
+      "Mandatory BIS product license certificate"
+    ],
+    "version": "Demo Rev. 2021",
+    "amendments": [
+      "Amendment 1 (2023): Tightened maximum loss limits by 6% in accordance with updated BEE guidelines"
+    ],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-02-05",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-012",
+    "title": "High-Density Polyethylene (HDPE) Pipes for Potable Drinking Water Supply",
+    "category": "Water Supply & Sanitation",
+    "scope": "Specifications for solid wall PE-80 and PE-100 grade HDPE pressure pipes for municipal drinking water conveyance, rural piped water supply schemes, and irrigation mains.",
+    "description": "Defines virgin polymer raw material grades, hydrostatic burst pressures, carbon black dispersion, melt flow rate, oxidation induction time (OIT), and potable hygiene standards.",
+    "keywords": [
+      "hdpe pipe",
+      "potable water",
+      "water supply",
+      "drinking water pipeline",
+      "pe 100",
+      "pe 80",
+      "pressure pipe",
+      "jal jeevan mission"
+    ],
+    "technical_requirements": [
+      "Manufactured exclusively from 100% virgin PE-100 grade polymer resin with MRS >= 10.0 MPa",
+      "Pressure ratings: PN 6, PN 10, PN 12.5, and PN 16 conforming to standard dimension ratio (SDR)",
+      "Uniform carbon black content: 2.0% to 2.5% by mass with dispersion rating <= Grade 3",
+      "Oxidation Induction Time (OIT) >= 20 minutes tested at 200 deg C ensuring thermal stability",
+      "Melt Flow Rate (MFR 190 deg C / 5.0 kg): 0.2 to 1.1 g/10 min with MFR difference <= 20% after processing"
+    ],
+    "related_standards": [],
+    "normative_references": [],
+    "test_methods": [
+      "Long-term hydrostatic pressure test: Withstand 100 hours at 20 deg C and 165 hours at 80 deg C without rupture",
+      "Tensile strength at yield >= 19 MPa with elongation at break >= 350%",
+      "Overall migration test proving suitability for potable drinking water without chemical leaching"
+    ],
+    "safety_requirements": [
+      "Zero toxicity and compliance with public health standards for drinking water contact",
+      "Continuous indelible blue co-extruded identification stripes indicating potable water use"
+    ],
+    "installation_requirements": [
+      "Joined using butt-fusion or electrofusion welding with automated data-logging welding machines",
+      "Trench bedding on 100mm compacted stone-free sand bed"
+    ],
+    "certification": [
+      "Mandatory ISI product certification mark on every 1-meter interval",
+      "Food-grade suitability certification for polymer raw material"
+    ],
+    "version": "Demo Rev. 2022",
+    "amendments": [
+      "Amendment 1 (2023): Strictly prohibits use of recycled or reprocessed plastic materials"
+    ],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-01-30",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-013",
+    "title": "Commercial Desktop Personal Computers for Institutional and Government Offices",
+    "category": "IT & Office Hardware",
+    "scope": "Specifications for enterprise desktop computing systems, micro tower workstations, and small form factor PCs procured for administrative workflows, digital record maintenance, and e-governance.",
+    "description": "Standardizes processor performance tiers, hardware TPM 2.0 security, power supply 80-Plus efficiency, OEM motherboard architecture, keyboard/mouse durability, and OS compliance.",
+    "keywords": [
+      "desktop computer",
+      "personal computer",
+      "pc",
+      "office it",
+      "workstation",
+      "tpm 2.0",
+      "energy star",
+      "computer hardware",
+      "government office"
+    ],
+    "technical_requirements": [
+      "Processor: Latest generation x86 64-bit multi-core CPU with benchmark score >= 12,000 points",
+      "Memory: Minimum 16 GB DDR4/DDR5 RAM expandable up to 64 GB across dual DIMM slots",
+      "Storage: Minimum 512 GB PCIe Gen4 NVMe M.2 Solid State Drive (SSD)",
+      "Motherboard: Enterprise OEM motherboard with integrated hardware TPM 2.0 cryptographic chip",
+      "Power Supply: Minimum 260W internal SMPS with 80-Plus Bronze or higher energy efficiency certification",
+      "Display: 23.8-inch Full HD (1920x1080) IPS panel with low blue light certification and height-adjustable stand"
+    ],
+    "related_standards": [
+      "DEMO-STD-014"
+    ],
+    "normative_references": [
+      "DEMO-STD-014: Online Uninterruptible Power Supply Systems"
+    ],
+    "test_methods": [
+      "Acoustic noise emission testing: Sound pressure <= 25 dBA at idle desk position",
+      "Electromagnetic compatibility (EMC) testing conforming to Class B commercial devices",
+      "Shock and thermal environmental stress screen (ESS)"
+    ],
+    "safety_requirements": [
+      "Chassis intrusion sensor alerting BIOS upon unauthorized case opening",
+      "Electrical safety insulation conforming to IT equipment standards (touch current < 3.5 mA)"
+    ],
+    "installation_requirements": [
+      "Pre-loaded with genuine operating system and endpoint security driver management",
+      "Comprehensive 3-year or 5-year onsite OEM warranty with next-business-day response"
+    ],
+    "certification": [
+      "Compulsory Registration Scheme (CRS) IT equipment safety certification",
+      "Energy Star 8.0 compliant certification and EPEAT Gold/Silver registration",
+      "RoHS and CE compliance certificates"
+    ],
+    "version": "Demo Rev. 2023",
+    "amendments": [
+      "Amendment 1 (2024): Elevated baseline storage standard to pure NVMe SSDs (eliminating mechanical HDDs as primary boot drive)"
+    ],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-02-15",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-014",
+    "title": "Online Uninterruptible Power Supply (UPS) Systems (1 kVA to 20 kVA)",
+    "category": "IT & Office Hardware",
+    "scope": "Applies to true online double-conversion UPS systems providing regulated uninterrupted AC power to mission-critical IT servers, telecom infrastructure, hospital diagnostic units, and administrative data centers.",
+    "description": "Specifies pure sine wave output, total harmonic distortion, battery management, transfer time (zero milliseconds), input power factor correction, and galvanic isolation.",
+    "keywords": [
+      "ups",
+      "online ups",
+      "uninterruptible power supply",
+      "battery backup",
+      "power conditioning",
+      "pure sine wave",
+      "inverter",
+      "server room power"
+    ],
+    "technical_requirements": [
+      "Topology: True online double conversion (VFI-SS-111)",
+      "Output waveform: Pure sine wave with Total Harmonic Distortion (THDv) <= 2% on linear load, <= 4% on non-linear load",
+      "Transfer time: 0 milliseconds (zero interruption during mains failure)",
+      "Input power factor >= 0.99 with IGBT-based active power factor correction (PFC)",
+      "Overload capacity: 125% for 10 minutes, 150% for 1 minute with automatic static bypass transition",
+      "Battery bank: Valve Regulated Lead Acid (VRLA) or Lithium-Iron-Phosphate (LiFePO4) with smart 3-stage charger"
+    ],
+    "related_standards": [
+      "DEMO-STD-013",
+      "DEMO-STD-015"
+    ],
+    "normative_references": [
+      "DEMO-STD-013: Commercial Desktop Personal Computers"
+    ],
+    "test_methods": [
+      "Dynamic step load response test: Output voltage variation within +/- 5% for 0-100% step load change",
+      "Efficiency testing across 25%, 50%, 75%, and 100% load steps (> 92% overall efficiency)",
+      "Static and maintenance bypass operation verification"
+    ],
+    "safety_requirements": [
+      "Galvanic isolation transformer option on output stage for zero neutral-to-earth voltage",
+      "Automatic battery disconnection in case of thermal runaway or over-charging current",
+      "Emergency Power Off (EPO) port connector for facility safety integration"
+    ],
+    "installation_requirements": [
+      "Floor-standing tower or 19-inch rack-mount chassis with heavy-duty caster wheels",
+      "RS-232, USB, and optional SNMP card slot for remote network monitoring"
+    ],
+    "certification": [
+      "Compulsory Registration Scheme (CRS) UPS safety registration",
+      "ISO 9001 and ISO 14001 manufacturing quality standards"
+    ],
+    "version": "Demo Rev. 2022",
+    "amendments": [],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-01-10",
+    "data_status": "DEMO"
+  },
+  {
+    "id": "DEMO-STD-015",
+    "title": "Cross-Linked Polyethylene (XLPE) Insulated Armoured Electric Power Cables (1.1 kV)",
+    "category": "Electrical Equipment",
+    "scope": "Covers single-core, two-core, three-core, and four-core XLPE insulated, PVC inner sheathed, galvanized steel wire/strip armoured electric power cables rated for 1100V working voltage in municipal, commercial, and industrial power distribution.",
+    "description": "Standardizes copper and aluminium conductor stranded compact geometry, cross-linked insulation thickness, armour coverage percentage, outer PVC sheath flame retardance (FRLS), and continuous current ratings.",
+    "keywords": [
+      "armoured cable",
+      "xlpe cable",
+      "power cable",
+      "1.1 kv cable",
+      "electrical cable",
+      "aluminium cable",
+      "frls",
+      "underground cable",
+      "electrical wiring"
+    ],
+    "technical_requirements": [
+      "Conductor: High-conductivity stranded compacted aluminium (Class 2) or annealed electrolytic copper",
+      "Insulation: Extruded cross-linked polyethylene (XLPE) suitable for continuous 90 deg C conductor temperature and 250 deg C short circuit",
+      "Armouring: Galvanized steel round wire or formed strip covering minimum 90% surface area for mechanical crush protection",
+      "Outer Sheath: Flame Retardant Low Smoke (FRLS) PVC compound Type ST2",
+      "Oxygen index >= 29% and temperature index >= 250 deg C for flame retardant jacket"
+    ],
+    "related_standards": [
+      "DEMO-STD-001",
+      "DEMO-STD-011"
+    ],
+    "normative_references": [
+      "DEMO-STD-011: Energy-Efficient Oil-Immersed Distribution Transformers"
+    ],
+    "test_methods": [
+      "High voltage water immersion test at 3 kV AC for 5 minutes",
+      "Conductor electrical resistance measurement at 20 deg C",
+      "Hot set test on XLPE insulation: Maximum elongation <= 175% under 20 N/cm2 stress at 200 deg C",
+      "Flammability test on cable bunched specimens (IEC 60332 / IS equivalent protocol)"
+    ],
+    "safety_requirements": [
+      "Acid gas emission from sheath <= 20% by weight to protect personnel and control rooms during fire",
+      "Smoke density light transmittance >= 40% during combustion"
+    ],
+    "installation_requirements": [
+      "Minimum bending radius: 12 times cable overall diameter for multi-core armoured cables",
+      "Supplied on non-returnable heavy-duty wooden or steel drums with both ends sealed against water ingress"
+    ],
+    "certification": [
+      "Mandatory ISI product certification mark on outer sheath every 1 meter",
+      "Type Test report covering mechanical, electrical, and fire endurance criteria"
+    ],
+    "version": "Demo Rev. 2021",
+    "amendments": [
+      "Amendment 1 (2023): Mandated FRLS compound as standard default for all indoor and tunnel installations"
+    ],
+    "source": "Prototype Knowledge Base",
+    "verified_at": "2026-01-12",
+    "data_status": "DEMO"
+  }
+]

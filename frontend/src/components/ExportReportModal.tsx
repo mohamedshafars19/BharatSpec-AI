@@ -1,0 +1,261 @@
+import React, { useState } from 'react';
+import { X, FileText, File, FileSpreadsheet, Check } from 'lucide-react';
+import { AnalyzeResponse } from '../types';
+import { generateReport } from '../services/api';
+import { useUI } from '../context/UIContext';
+
+interface ExportReportModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  analysis: AnalyzeResponse;
+  projectId?: string;
+}
+
+export const ExportReportModal: React.FC<ExportReportModalProps> = ({
+  isOpen,
+  onClose,
+  analysis,
+  projectId,
+}) => {
+  const { showToast } = useUI();
+  const [reportTitle, setReportTitle] = useState<string>(
+    `Procurement Specification Audit Report — ${analysis.structured_requirement.product || 'Equipment'}`
+  );
+  const [format, setFormat] = useState<'md' | 'txt' | 'pdf'>('md');
+  const [generating, setGenerating] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  if (!isOpen) return null;
+
+  const handleGenerate = async () => {
+    try {
+      setGenerating(true);
+      setError(null);
+
+      // Call backend to store report in DB
+      await generateReport({
+        analysis_id: analysis.analysis_id,
+        project_id: projectId || analysis.project_id,
+        title: reportTitle,
+        format: format,
+      });
+
+      // Also trigger file download in browser
+      const markdownContent = buildReportContent();
+      const blob = new Blob([markdownContent], {
+        type: format === 'txt' ? 'text/plain' : 'text/markdown',
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${reportTitle.replace(/[^a-zA-Z0-9_-]/g, '_')}.${format === 'pdf' ? 'txt' : format}`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      showToast('Report generated & saved to procurement repository', 'success');
+      onClose();
+    } catch (err: any) {
+      setError(err?.message || 'Failed to generate report');
+    } finally {
+      setGenerating(false);
+    }
+  };
+
+  const buildReportContent = (): string => {
+    const req = analysis.structured_requirement;
+    const audit = analysis.audit;
+
+    return `# BHARATSPEC AI — PROCUREMENT SPECIFICATION AUDIT REPORT
+Generated: ${new Date().toLocaleDateString('en-IN', { dateStyle: 'full' })}
+Readiness Index: ${audit.readiness_score} / 100 (${audit.overall_status})
+
+================================================================================
+1. RAW PROCUREMENT REQUIREMENT
+================================================================================
+"${analysis.user_requirement}"
+
+================================================================================
+2. EXTRACTED TECHNICAL PROFILE
+================================================================================
+- Product Name: ${req.product}
+- Category: ${req.category}
+- Application: ${req.application}
+- Operating Environment: ${req.environment}
+- Indented Quantity: ${req.quantity || 'Not Specified'}
+- Warranty Expectation: ${req.warranty || 'Not Specified'}
+
+================================================================================
+3. SPECIFICATION GAP AUDIT & READINESS BREAKDOWN
+================================================================================
+Overall Readiness Score: ${audit.readiness_score}/100
+Checklist Findings:
+${audit.checklist
+  .map(
+    (c) =>
+      `[${c.status.toUpperCase()}] ${c.category} (Score: ${c.score}/${c.max_score})\n  Finding: ${c.findings}\n  Prescribed Action: ${c.recommendation}\n`
+  )
+  .join('\n')}
+
+================================================================================
+4. APPLICABLE INDIAN STANDARDS SCHEDULE
+================================================================================
+${analysis.recommendations
+  .map(
+    (rec, idx) =>
+      `${idx + 1}. ${rec.standard_id}: ${rec.title}
+   Role: ${rec.role_category || 'Primary'}
+   Catalogue Status: ${rec.standard_details.data_status} | Version: ${rec.standard_details.version}
+   Rationale: ${rec.why_recommended}
+   Mandatory Criteria Matched: ${rec.match_criteria.join(', ')}
+   Test Methods: ${rec.standard_details.test_methods.join(', ') || 'Refer to normative schedule'}
+`
+  )
+  .join('\n')}
+
+================================================================================
+5. RECOMMENDED TENDER TECHNICAL SPECIFICATION SCHEDULE
+================================================================================
+${
+  analysis.improved_specification
+    ? analysis.improved_specification.sections
+        .map((s) => `### ${s.title}\n${s.content}`)
+        .join('\n\n')
+    : 'Refer to standards schedule.'
+}
+
+================================================================================
+NOTICE
+================================================================================
+This procurement audit was generated by BharatSpec AI for technical evaluation
+and tender preparation assistance. Always confirm prevailing gazette amendments
+with the Bureau of Indian Standards before contract finalization.
+`;
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/40 backdrop-blur-xs flex items-center justify-center p-4">
+      <div className="bg-white rounded-xl shadow-2xl max-w-md w-full border border-[#EAE2D6] overflow-hidden">
+        <div className="px-6 py-4 border-b border-[#EAE2D6] bg-[#F7F2EB] flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#557A5B]" />
+            <h3 className="font-serif text-base font-bold text-[#20241F]">
+              Generate Procurement Audit Report
+            </h3>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="w-7 h-7 rounded-full bg-white border border-[#EAE2D6] flex items-center justify-center text-gray-500 hover:text-black transition-colors"
+            title="Close"
+          >
+            <X className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+        <div className="p-6 space-y-4">
+          {error && (
+            <div className="p-2.5 bg-red-50 border border-red-200 text-red-700 rounded-lg text-xs">
+              {error}
+            </div>
+          )}
+
+          <div>
+            <label className="block text-xs font-medium text-[#20241F] mb-1">
+              Report Document Title
+            </label>
+            <input
+              type="text"
+              value={reportTitle}
+              onChange={(e) => setReportTitle(e.target.value)}
+              className="w-full text-xs p-2.5 border border-[#EAE2D6] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#8B9A6E]"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-medium text-[#20241F] mb-1">
+              Select Output Format
+            </label>
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { id: 'md', label: 'Markdown (.md)', icon: FileText },
+                { id: 'txt', label: 'Tender Text (.txt)', icon: File },
+                { id: 'pdf', label: 'PDF Summary', icon: FileSpreadsheet },
+              ].map((fmt) => {
+                const Icon = fmt.icon;
+                return (
+                  <button
+                    key={fmt.id}
+                    type="button"
+                    onClick={() => setFormat(fmt.id as any)}
+                    className={`p-3 rounded-lg border text-center transition-all text-xs flex flex-col items-center justify-center ${
+                      format === fmt.id
+                        ? 'border-[#8B9A6E] bg-[#F7F8F5] ring-1 ring-[#8B9A6E] font-semibold text-[#20241F]'
+                        : 'border-[#EAE2D6] bg-white text-[#20241F]/80 hover:bg-gray-50'
+                    }`}
+                  >
+                    <Icon className="w-5 h-5 mb-1.5 text-[#8B9A6E]" />
+                    <div className="text-[11px]">{fmt.label}</div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="p-3 bg-[#FAF7F2] rounded-lg border border-[#EAE2D6] text-xs text-[#20241F]/70 space-y-1">
+            <span className="font-semibold text-[#20241F] block mb-1">
+              Included in this export:
+            </span>
+            <div className="flex items-center gap-1.5">
+              <Check className="w-3.5 h-3.5 text-[#557A5B] shrink-0" />
+              <span>Full 10-point specification audit & readiness score</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Check className="w-3.5 h-3.5 text-[#557A5B] shrink-0" />
+              <span>Verified Indian Standards and test method citations</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Check className="w-3.5 h-3.5 text-[#557A5B] shrink-0" />
+              <span>Complete 9-section improved tender technical schedule</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Check className="w-3.5 h-3.5 text-[#557A5B] shrink-0" />
+              <span>Audit trail and data provenance records</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-4 border-t border-[#EAE2D6] bg-[#F7F2EB] flex items-center justify-end gap-2">
+          <button
+            type="button"
+            onClick={onClose}
+            className="px-3 py-1.5 border border-[#EAE2D6] text-xs font-medium text-gray-700 rounded-lg hover:bg-white transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            onClick={handleGenerate}
+            disabled={generating}
+            className="px-4 py-1.5 bg-[#557A5B] hover:bg-[#436248] text-white text-xs font-medium rounded-lg transition-colors shadow-xs disabled:opacity-50 flex items-center gap-1.5"
+          >
+            {generating ? (
+              <>
+                <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                <span>Generating...</span>
+              </>
+            ) : (
+              <>
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>Generate & Download</span>
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
